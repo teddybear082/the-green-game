@@ -1121,13 +1121,13 @@ strafe = true
 [node name="MovementTurn" parent="FPController/RightHandController" index="0" instance=ExtResource( 6 )]
 
 [node name="grabber_pivot" type="Spatial" parent="FPController/RightHandController" index="1"]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, 0, -1 )
+transform = Transform( -4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, -1 )
 
 [node name="grabber_RemoteTransform" type="RemoteTransform" parent="FPController/RightHandController/grabber_pivot"]
 remote_path = NodePath("../../../../Head/grabber")
 
 [node name="raycast_pivot" type="Spatial" parent="FPController/RightHandController" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.33312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.65505 )
 
 [node name="raycast_RemoteTransform" type="RemoteTransform" parent="FPController/RightHandController/raycast_pivot"]
 remote_path = NodePath("../../../../Head/Camera/RayCast")
@@ -1142,7 +1142,7 @@ script = ExtResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06 )
 
 [node name="RayCast" type="RayCast" parent="Head/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2.10906, -2.77312 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2.10906, -2.09505 )
 enabled = true
 cast_to = Vector3( 0, 0, -3.5 )
 collision_mask = 2
@@ -1220,7 +1220,7 @@ mesh = SubResource( 7 )
 material/0 = ExtResource( 17 )
 
 [node name="grabber" parent="Head" instance=ExtResource( 2 )]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0.5, -2.10906, -1.5 )
+transform = Transform( -0.046212, 0.166168, -0.101255, 0.0201317, -0.0994298, -0.172361, -0.193544, -0.0500178, 0.00624799, 0.672, -0.414, -1.53 )
 grab_strength = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]

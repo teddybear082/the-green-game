@@ -58,11 +58,13 @@ func hide_grabber_and_disable_movement():
 	if($Head/garbage_bag):
 		$Head/garbage_bag.hide()
 	$Head/grabber.hide()
+	$FPController/LeftHandController/FunctionPointer.enabled = true
 
 func show_grabber_and_enable_movement():
 	_movement_disabled = false
 #	$Head/garbage_bag.show()
 	$Head.introduce_grabber()
+	$FPController/LeftHandController/FunctionPointer.enabled = false
 	
 func display_garbage_bag():
 	pass

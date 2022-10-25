@@ -15,8 +15,12 @@ func _ready() -> void:
 	if(level_name != 'vessel'):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	call_deferred('setup_level')
+	
+	#Connect necessary signals
 	$MainMenuViewport3D.get_scene_instance().connect("game_started", self, "_on_MainMenu_game_started")
 	$MainMenuViewport3D.get_scene_instance().connect("shadows_toggled", self, "_on_MainMenu_shadows_toggled")
+	$Player/Head.connect("game_finished", self, "_on_Head_game_finished")
+	$Player/Head.connect("trash_picked_up", self, "_on_Head_trash_picked_up")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -49,7 +53,8 @@ func _on_MainMenu_game_started():
 		$StartingDoors/AudioStreamPlayer3D.play()
 		is_game_started = true
 		$Player.show_grabber_and_enable_movement()
-
+		yield(get_tree().create_timer(2.0), "timeout")
+		$Occluders/TreeOccluder.visible = true
 
 func _on_Head_trash_picked_up():
 	trash_picked_up += 1

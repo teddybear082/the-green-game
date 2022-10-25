@@ -42,13 +42,13 @@ func set_light(val: bool):
 
 
 func _on_Area_body_entered(body):
-	if(body.name == "Player"):
+	if(body.get_parent().get_parent().get_parent().name == "Player"):
 		_is_player_inside = true
 		set_light(true)
 
 
 func _on_Area_body_exited(body):
-	if(body.name == "Player"):
+	if(body.get_parent().get_parent().get_parent().name == "Player"):
 		_is_player_inside = false
 		set_light(false)
 
