@@ -10,6 +10,7 @@ export var level_name := ""
 var initial_trash_count = 0.0
 var trash_picked_up = 0.0
 var is_game_started = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(level_name != 'vessel'):
@@ -21,6 +22,22 @@ func _ready() -> void:
 	$MainMenuViewport3D.get_scene_instance().connect("shadows_toggled", self, "_on_MainMenu_shadows_toggled")
 	$Player/Head.connect("game_finished", self, "_on_Head_game_finished")
 	$Player/Head.connect("trash_picked_up", self, "_on_Head_trash_picked_up")
+	$Player/FPController/LeftHandController.connect("button_pressed", self, "_on_left_controller_button_pressed")
+
+# Needed for VR since VR does not create input events to generate main menu popup
+func _on_left_controller_button_pressed(button):
+	if button != JOY_OCULUS_BY:
+		return
+		
+	if button == JOY_OCULUS_BY:
+		if $MainMenuViewport3D.visible == false:
+			$MainMenuViewport3D.global_transform.origin = $Player/FPController.global_transform.origin
+			$MainMenuViewport3d.translate_object_local(0,0,-3)
+			$MainMenuViewport3D.visible = true
+			$MainMenuViewport3D.enabled = true
+		else:
+			$MainMenuViewport3D.visible = false
+			$MainMenuViewport3D.enabled = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -45,7 +62,7 @@ func setup_level():
 		pass
 	else:
 		initial_trash_count = $TrashScatter3D.get_child_count()
-
+		$Player/Head.add_garbage_bag()
 
 func _on_MainMenu_game_started():
 	if(level_name == "vessel" && !is_game_started):
@@ -67,4 +84,5 @@ func _on_Head_game_finished():
 	$WorldEnvironment.finish_game()
 
 func _on_MainMenu_shadows_toggled(toggle):
-	$WorldEnvironment/DirectionalLight.shadow_enabled = toggle
+	if get_node_or_null("WorldEnvironment/DirectionalLight") != null:
+		$WorldEnvironment/DirectionalLight.shadow_enabled = toggle

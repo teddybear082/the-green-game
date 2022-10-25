@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://addons/godot-xr-tools/functions/movement_direct.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/grabber/grabber.tscn" type="PackedScene" id=2]
@@ -20,6 +20,20 @@
 [ext_resource path="res://materials/painting_spatial_material.tres" type="Material" id=18]
 [ext_resource path="res://meshes/handle/Color1.material" type="Material" id=19]
 [ext_resource path="res://meshes/sci_fi_lamp/glass.material" type="Material" id=20]
+[ext_resource path="res://addons/godot-xr-tools/overrides/ground_physics_settings.gd" type="Script" id=21]
+[ext_resource path="res://addons/godot-xr-tools/functions/movement_jump.tscn" type="PackedScene" id=22]
+
+[sub_resource type="Resource" id=85]
+script = ExtResource( 21 )
+flags = 16
+move_drag = 5.0
+move_traction = 30.0
+stop_on_slope = true
+move_max_slope = 45.0
+jump_max_slope = 45.0
+jump_velocity = 5.0
+bounciness = 0.0
+bounce_threshold = 1.0
 
 [sub_resource type="PlaneMesh" id=7]
 size = Vector2( 0, 0.499 )
@@ -1119,6 +1133,7 @@ strafe = true
 [node name="FunctionPointer" parent="FPController/LeftHandController" index="1" instance=ExtResource( 7 )]
 
 [node name="MovementTurn" parent="FPController/RightHandController" index="0" instance=ExtResource( 6 )]
+smooth_rotation = true
 
 [node name="grabber_pivot" type="Spatial" parent="FPController/RightHandController" index="1"]
 transform = Transform( -4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, -1 )
@@ -1132,7 +1147,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.65505 )
 [node name="raycast_RemoteTransform" type="RemoteTransform" parent="FPController/RightHandController/raycast_pivot"]
 remote_path = NodePath("../../../../Head/Camera/RayCast")
 
+[node name="MovementJump" parent="FPController/RightHandController" index="3" instance=ExtResource( 22 )]
+jump_button_id = 7
+
 [node name="PlayerBody" parent="FPController" instance=ExtResource( 5 )]
+physics = SubResource( 85 )
 
 [node name="Head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.10906, 0 )

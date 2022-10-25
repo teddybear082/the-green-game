@@ -31,7 +31,7 @@ func _set_mesh_to_outline():
 	assert(!mesh_to_outline_path.is_empty())
 	_mesh_to_outline = get_node(mesh_to_outline_path)
 	_mesh_to_outline.set_surface_material(0, _mesh_to_outline.get_active_material(0).duplicate())
-	var outline_shader = load("outline_shadermaterial.tres").duplicate()
+	var outline_shader = load("res://materials/outline_shadermaterial.tres").duplicate()
 	outline_shader.set("shader_param/outline_width", 0)
 	_mesh_to_outline.get_active_material(0).set_next_pass(outline_shader)
 

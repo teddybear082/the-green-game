@@ -53,40 +53,40 @@ shader_param/BackColor1 = Color( 0.313726, 0.858824, 0.141176, 1 )
 shader_param/BackColor2 = Color( 1, 0.32549, 0.752941, 1 )
 shader_param/Brightness = 4.0
 
-[sub_resource type="SpatialMaterial" id=134]
+[sub_resource type="SpatialMaterial" id=146]
 albedo_texture = ExtResource( 7 )
 
 [sub_resource type="SpatialMaterial" id=109]
 albedo_texture = ExtResource( 9 )
 
-[sub_resource type="SpatialMaterial" id=135]
+[sub_resource type="SpatialMaterial" id=147]
 albedo_texture = ExtResource( 13 )
 
-[sub_resource type="SpatialMaterial" id=136]
+[sub_resource type="SpatialMaterial" id=148]
 albedo_texture = ExtResource( 15 )
 
-[sub_resource type="SpatialMaterial" id=137]
+[sub_resource type="SpatialMaterial" id=149]
 albedo_texture = ExtResource( 11 )
 
-[sub_resource type="SpatialMaterial" id=138]
+[sub_resource type="SpatialMaterial" id=150]
 albedo_texture = ExtResource( 12 )
 
-[sub_resource type="SpatialMaterial" id=139]
+[sub_resource type="SpatialMaterial" id=151]
 albedo_texture = ExtResource( 10 )
 
-[sub_resource type="SpatialMaterial" id=140]
+[sub_resource type="SpatialMaterial" id=152]
 albedo_texture = ExtResource( 14 )
 
-[sub_resource type="SpatialMaterial" id=141]
+[sub_resource type="SpatialMaterial" id=153]
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=142]
+[sub_resource type="SpatialMaterial" id=154]
 albedo_texture = ExtResource( 18 )
 
-[sub_resource type="SpatialMaterial" id=143]
+[sub_resource type="SpatialMaterial" id=155]
 albedo_texture = ExtResource( 17 )
 
-[sub_resource type="SpatialMaterial" id=144]
+[sub_resource type="SpatialMaterial" id=156]
 albedo_texture = ExtResource( 16 )
 
 [sub_resource type="Animation" id=91]
@@ -274,7 +274,7 @@ autoplay = true
 [node name="PaintingRight" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 2.68354, -5.80352 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 134 )
+material/0 = SubResource( 146 )
 picture_name = "marina_notturna"
 
 [node name="PaintingRight2" parent="Paintings" instance=ExtResource( 6 )]
@@ -285,61 +285,61 @@ material/0 = SubResource( 109 )
 [node name="PaintingRight3" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 2.68354, 4.18967 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 135 )
+material/0 = SubResource( 147 )
 picture_name = "september_moonrise"
 
 [node name="PaintingRight4" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 2.68354, 9.2313 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 136 )
+material/0 = SubResource( 148 )
 picture_name = "bois_tailler_en_automne"
 
 [node name="PaintingRight5" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 2.68354, 14.1996 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 137 )
+material/0 = SubResource( 149 )
 picture_name = "chestnut_trees_in_bloom"
 
 [node name="PaintingRight6" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 4.0121, 2.68354, 19.1959 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 138 )
+material/0 = SubResource( 150 )
 picture_name = "green_wheat_fields_auvers"
 
 [node name="PaintingLeft" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 0, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, -5.65984 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 139 )
+material/0 = SubResource( 151 )
 picture_name = "maine_coast_moonlight"
 
 [node name="PaintingLeft2" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 0, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, -0.657445 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 140 )
+material/0 = SubResource( 152 )
 picture_name = "the_golden_hour"
 
 [node name="PaintingLeft3" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 2.19382e-22, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, 4.32644 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 141 )
+material/0 = SubResource( 153 )
 picture_name = "sunlight_on_the_coast"
 
 [node name="PaintingLeft4" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 2.19382e-22, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, 9.28334 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 142 )
+material/0 = SubResource( 154 )
 picture_name = "seascape_with_crushing_surf"
 
 [node name="PaintingLeft5" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 2.19382e-22, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, 14.3284 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 143 )
+material/0 = SubResource( 155 )
 picture_name = "the_beach_at_filey_in_yorkshire_england"
 
 [node name="PaintingLeft6" parent="Paintings" instance=ExtResource( 6 )]
 transform = Transform( -4.59407e-08, 1.151, -4.5285e-08, 2.19382e-22, -5.03118e-08, -1.036, -1.051, -5.03118e-08, 1.97947e-15, -4.2583, 2.71741, 19.3054 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 144 )
+material/0 = SubResource( 156 )
 picture_name = "mer_montane_a_veulettes"
 
 [node name="Corridors" type="Spatial" parent="."]
@@ -376,6 +376,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8 )
 screen_size = Vector2( 2, 4 )
 viewport_size = Vector2( 465, 1080 )
 scene = ExtResource( 21 )
+collision_layer = 1021
 
 [node name="Occluders" type="Node" parent="."]
 

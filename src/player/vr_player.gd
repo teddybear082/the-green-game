@@ -48,7 +48,7 @@ func _on_Handle_turn_finished():
 			
 func disable_movement():
 	_movement_disabled = true
-	$CollisionShape.disabled = true
+	#$CollisionShape.disabled = true
 	$Head/grabber.hide()
 	if($Head/garbage_bag):
 		$Head/garbage_bag.hide()

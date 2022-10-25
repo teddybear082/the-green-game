@@ -25,7 +25,12 @@ func _ready() -> void:
 	tween.tween_callback(self, "hide_shader_cache").set_delay(5)
 	initial_y_rotation = get_owner().rotation.y
 
-
+#needed for VR version since there is no input event, always need to be checking raycast colliders
+func _process(delta):
+	if(_is_locked):
+		return
+	check_colliders()
+	
 # Called when there is an input event
 func _input(event: InputEvent) -> void:
 	if(_is_locked):
