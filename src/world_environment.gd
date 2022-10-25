@@ -16,5 +16,7 @@ func get_life_strength():
 	return lifeness
 
 func finish_game():
+	var end_scene = load("res://src/end_credits/end_credits_scene_vr.tscn")
 	$AnimationPlayer.play("make_green")
+	yield(get_tree().create_timer(2.5), "timeout")
 	get_tree().change_scene("res://src/end_credits/end_credits_scene_vr.tscn")
