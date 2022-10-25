@@ -106,6 +106,6 @@ func add_garbage_bag():
 
 	garbage_bag.translation = Vector3(-3.5,-1.7,-2.2)
 	garbage_bag.rotation_degrees = Vector3(-30,-91, 0)
-	garbage_bag.scale = Vector3(3,3,3)
+	garbage_bag.scale = Vector3(1,1,1)
 	self.add_child(garbage_bag)
-
+	get_parent().get_node("FPController/LeftHandController/garbage_bag_RemoteTransform").remote_path = garbage_bag.get_path()

@@ -1132,6 +1132,8 @@ strafe = true
 
 [node name="FunctionPointer" parent="FPController/LeftHandController" index="1" instance=ExtResource( 7 )]
 
+[node name="garbage_bag_RemoteTransform" type="RemoteTransform" parent="FPController/LeftHandController" index="2"]
+
 [node name="MovementTurn" parent="FPController/RightHandController" index="0" instance=ExtResource( 6 )]
 smooth_rotation = true
 

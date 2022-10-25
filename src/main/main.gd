@@ -31,23 +31,25 @@ func _on_left_controller_button_pressed(button):
 		
 	if button == JOY_OCULUS_BY:
 		if $MainMenuViewport3D.visible == false:
-			$MainMenuViewport3D.global_transform.origin = $Player/FPController.global_transform.origin
-			$MainMenuViewport3d.translate_object_local(0,0,-3)
+			$MainMenuViewport3D.global_transform = $Player/FPController/ARVRCamera.global_transform
+			$MainMenuViewport3D.translate_object_local(Vector3(0,0,-3))
 			$MainMenuViewport3D.visible = true
 			$MainMenuViewport3D.enabled = true
+			$Player/FPController/LeftHandController/FunctionPointer.enabled = true
 		else:
 			$MainMenuViewport3D.visible = false
 			$MainMenuViewport3D.enabled = false
+			$Player/FPController/LeftHandController/FunctionPointer.enabled = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		$MainMenu.trigger()
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("ui_cancel"):
+#		$MainMenu.trigger()
 
 
 func _on_FloorDoor_floor_door_opened():
 	var transform = Transform()
 	var tween = get_tree().create_tween()
-	tween.tween_property($Player, "transform", Transform($Player.transform.basis, Vector3(-0.25, -0.4, 22.3)), 0.5)
+	tween.tween_property($Player/FPController, "transform", Transform($Player/FPController.transform.basis, Vector3(-0.25, -0.4, 22.3)), 0.5)
 	$AnimationPlayer.play("teleport_player")
 	$Player.disable_movement()
 

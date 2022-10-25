@@ -17,4 +17,4 @@ func get_life_strength():
 
 func finish_game():
 	$AnimationPlayer.play("make_green")
-
+	get_tree().change_scene("res://src/end_credits/end_credits_scene_vr.tscn")
