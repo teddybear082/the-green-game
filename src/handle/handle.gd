@@ -24,7 +24,7 @@ func change_outline_visibility(is_visible: bool):
 
 func _set_mesh_to_outline():
 	$TopPart/Handle.set_surface_material(0, $TopPart/Handle.get_active_material(0).duplicate())
-	var outline_shader = load("outline_shadermaterial.tres").duplicate()
+	var outline_shader = load("res://materials/outline_shadermaterial.tres").duplicate()
 	outline_shader.set("shader_param/outline_width", 0)
 	$TopPart/Handle.get_active_material(0).set_next_pass(outline_shader)
 

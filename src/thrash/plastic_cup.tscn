@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/thrash/thrash.gd" type="Script" id=1]
-[ext_resource path="res://outline_shadermaterial.tres" type="Material" id=2]
+[ext_resource path="res://materials/outline_shadermaterial.tres" type="Material" id=2]
+
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "ridged_plastic_cup_Cylinder"

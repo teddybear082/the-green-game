@@ -4,7 +4,8 @@
 [ext_resource path="res://meshes/garbage/PlasticBottle2/BottleCap_Base_Color.png" type="Texture" id=2]
 [ext_resource path="res://meshes/garbage/PlasticBottle2/WaterBottle1_Base_Color.png" type="Texture" id=3]
 [ext_resource path="res://src/thrash/thrash.gd" type="Script" id=4]
-[ext_resource path="res://outline_shadermaterial.tres" type="Material" id=5]
+[ext_resource path="res://materials/outline_shadermaterial.tres" type="Material" id=5]
+
 
 [sub_resource type="ArrayMesh" id=2]
 resource_name = "Mesh.001"

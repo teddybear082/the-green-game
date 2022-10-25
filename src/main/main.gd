@@ -9,13 +9,14 @@ export var level_name := ""
 
 var initial_trash_count = 0.0
 var trash_picked_up = 0.0
-
+var is_game_started = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(level_name != 'vessel'):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	call_deferred('setup_level')
-
+	$MainMenuViewport3D.get_scene_instance().connect("game_started", self, "_on_MainMenu_game_started")
+	$MainMenuViewport3D.get_scene_instance().connect("shadows_toggled", self, "_on_MainMenu_shadows_toggled")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -42,7 +43,6 @@ func setup_level():
 		initial_trash_count = $TrashScatter3D.get_child_count()
 
 
-var is_game_started = false
 func _on_MainMenu_game_started():
 	if(level_name == "vessel" && !is_game_started):
 		$AnimationPlayer.play("start_doors")
