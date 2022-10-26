@@ -19,7 +19,7 @@ func _on_ExitButton_pressed():
 func _on_StartButton_pressed():
 	$VBoxContainer/StartButton.text = "Continue"
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	self.hide()
+	#self.hide()
 	emit_signal("game_started")
 
 func trigger():

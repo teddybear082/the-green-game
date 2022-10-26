@@ -29,8 +29,11 @@ far = 1000.0
 [node name="VRCommonShaderCache" parent="FPController/ARVRCamera" index="0" instance=ExtResource( 5 )]
 
 [node name="FunctionPointer" parent="FPController/LeftHandController" index="0" instance=ExtResource( 9 )]
+show_laser = 2
+laser_length = 1
 
 [node name="MovementTurn" parent="FPController/RightHandController" index="0" instance=ExtResource( 4 )]
+turn_mode = 2
 
 [node name="FunctionPointer" parent="FPController/RightHandController" index="1" instance=ExtResource( 9 )]
 
@@ -48,6 +51,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66923, -2.92104 )
 screen_size = Vector2( 4, 2 )
 viewport_size = Vector2( 1920, 1080 )
 scene = ExtResource( 1 )
+update_mode = 2
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
 environment = SubResource( 2 )

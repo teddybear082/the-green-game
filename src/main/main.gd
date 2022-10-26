@@ -15,6 +15,7 @@ var is_game_started = false
 func _ready() -> void:
 	if(level_name != 'vessel'):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		$MainMenuViewport3D.get_scene_instance().get_node("VBoxContainer/StartButton").text = "Continue"
 	call_deferred('setup_level')
 	
 	#Connect necessary signals
@@ -24,6 +25,7 @@ func _ready() -> void:
 	$Player/Head.connect("trash_picked_up", self, "_on_Head_trash_picked_up")
 	$Player/FPController/LeftHandController.connect("button_pressed", self, "_on_left_controller_button_pressed")
 
+	
 # Needed for VR since VR does not create input events to generate main menu popup
 func _on_left_controller_button_pressed(button):
 	if button != JOY_OCULUS_BY:
@@ -64,17 +66,25 @@ func setup_level():
 		pass
 	else:
 		initial_trash_count = $TrashScatter3D.get_child_count()
+		for child in $TrashScatter3D.get_children():
+			child.global_scale(Vector3(.5,.5,.5))
 		$Player/Head.add_garbage_bag()
 
 func _on_MainMenu_game_started():
 	if(level_name == "vessel" && !is_game_started):
+		$MainMenuViewport3D.enabled = false
+		$MainMenuViewport3D.visible = false
 		$AnimationPlayer.play("start_doors")
 		$StartingDoors/AudioStreamPlayer3D.play()
 		is_game_started = true
 		$Player.show_grabber_and_enable_movement()
 		yield(get_tree().create_timer(2.0), "timeout")
 		$Occluders/TreeOccluder.visible = true
-
+	else:
+		$MainMenuViewport3D.enabled = false
+		$MainMenuViewport3D.visible = false
+		$Player/FPController/LeftHandController/FunctionPointer.enabled = false
+		
 func _on_Head_trash_picked_up():
 	trash_picked_up += 1
 	var trash_picked_up_percentage = trash_picked_up / initial_trash_count * 100.0

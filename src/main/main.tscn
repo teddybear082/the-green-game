@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://meshes/Material.material" type="Material" id=1]
 [ext_resource path="res://src/main/main.gd" type="Script" id=2]
@@ -745,7 +745,11 @@ resource_name = "start"
 length = 2.0
 
 [sub_resource type="OccluderShapePolygon" id=88]
-polygon_points = PoolVector2Array( 27.0995, -2.52512, 26.2131, 8.16934, -24.3597, 8.66866, -23.4609, -3.39079 )
+polygon_points = PoolVector2Array( 11.0775, -1.58548, 13.1271, 14.2457, -10.4169, 14.4149, -10.3994, -1.56502 )
+
+[sub_resource type="OccluderShapePolygon" id=89]
+two_way = false
+polygon_points = PoolVector2Array( 11.7989, -1.90836, 11.8744, 8.72385, -31.9648, 8.77334, -31.5635, -3.2578 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -1102,6 +1106,7 @@ lifeness = 0.0
 [node name="DirectionalLight" parent="WorldEnvironment" index="0"]
 light_energy = 1.9
 shadow_bias = 0.226
+directional_shadow_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "start"
@@ -1115,12 +1120,17 @@ enabled = false
 screen_size = Vector2( 2, 4 )
 viewport_size = Vector2( 465, 1080 )
 scene = ExtResource( 28 )
+update_mode = 2
 collision_layer = 1021
 
 [node name="Occluders" type="Node" parent="."]
 
 [node name="Occluder" type="Occluder" parent="Occluders"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.69986, 0, -18.5967 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -34.2071 )
 shape = SubResource( 88 )
+
+[node name="Occluder2" type="Occluder" parent="Occluders"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -14.0163 )
+shape = SubResource( 89 )
 
 [editable path="WorldEnvironment"]
