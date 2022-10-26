@@ -11,7 +11,8 @@ func _ready():
 	yield(get_tree().create_timer(1.0), "timeout")
 	$CreditsViewport2Din3D.enabled = false
 	$CreditsViewport2Din3D.visible = false
-	$CreditsViewport2Din3D.global_transform = $FPController/ARVRCamera.global_transform
+	$CreditsViewport2Din3D.global_transform.origin = $FPController/ARVRCamera.global_transform.origin
+	$CreditsViewport2Din3D.global_transform.basis.z = $FPController/ARVRCamera.global_transform.basis.z
 	$CreditsViewport2Din3D.translate_object_local(Vector3(0,0,-3))
 	yield(get_tree().create_timer(1.0), "timeout")
 	$CreditsViewport2Din3D.enabled = true
