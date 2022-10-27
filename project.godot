@@ -19,10 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/thrash/thrash.gd"
 }, {
-"base": "EditorPlugin",
+"base": "Reference",
 "class": "XRTools",
 "language": "GDScript",
-"path": "res://addons/godot-xr-tools/plugin.gd"
+"path": "res://addons/godot-xr-tools/xr_tools.gd"
 }, {
 "base": "Spatial",
 "class": "XRToolsClimbable",
@@ -209,10 +209,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-xr-tools/assets/poke.gd"
 }, {
+"base": "Spatial",
+"class": "XRToolsSceneBase",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/staging/scene_base.gd"
+}, {
 "base": "Area",
 "class": "XRToolsSnapZone",
 "language": "GDScript",
 "path": "res://addons/godot-xr-tools/objects/snap_zone.gd"
+}, {
+"base": "Spatial",
+"class": "XRToolsStaging",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/staging/staging.gd"
 }, {
 "base": "Reference",
 "class": "XRToolsVelocityAverager",
@@ -275,7 +285,9 @@ _global_script_class_icons={
 "XRToolsPickable": "",
 "XRToolsPlayerBody": "res://addons/godot-xr-tools/editor/icons/body.svg",
 "XRToolsPoke": "",
+"XRToolsSceneBase": "",
 "XRToolsSnapZone": "",
+"XRToolsStaging": "",
 "XRToolsVelocityAverager": "",
 "XRToolsVelocityAveragerLinear": "",
 "XRToolsVirtualKeyboard2D": "",
@@ -292,6 +304,7 @@ config/icon="res://icon.png"
 [autoload]
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+UserSettings="*res://src/autoloads/user_settings.gd"
 
 [display]
 

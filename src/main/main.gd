@@ -21,6 +21,8 @@ func _ready() -> void:
 	#Connect necessary signals
 	$MainMenuViewport3D.get_scene_instance().connect("game_started", self, "_on_MainMenu_game_started")
 	$MainMenuViewport3D.get_scene_instance().connect("shadows_toggled", self, "_on_MainMenu_shadows_toggled")
+	$MainMenuViewport3D.get_scene_instance().connect("teleport_toggled", self, "_on_MainMenu_teleport_toggled")
+	$MainMenuViewport3D.get_scene_instance().connect("snap_turn_toggled", self, "_on_MainMenu_snap_turn_toggled")
 	$Player/Head.connect("game_finished", self, "_on_Head_game_finished")
 	$Player/Head.connect("trash_picked_up", self, "_on_Head_trash_picked_up")
 	$Player/FPController/LeftHandController.connect("button_pressed", self, "_on_left_controller_button_pressed")
@@ -37,12 +39,15 @@ func _on_left_controller_button_pressed(button):
 			$MainMenuViewport3D.translate_object_local(Vector3(0,0,-3))
 			$MainMenuViewport3D.visible = true
 			$MainMenuViewport3D.enabled = true
+			$Player/FPController/LeftHandController/FunctionTeleport.enabled = false
 			$Player/FPController/LeftHandController/FunctionPointer.enabled = true
+		
 		else:
 			$MainMenuViewport3D.visible = false
 			$MainMenuViewport3D.enabled = false
 			$Player/FPController/LeftHandController/FunctionPointer.enabled = false
-
+			if UserSettings.use_teleport == true:
+				$Player/FPController/LeftHandController/FunctionTeleport.enabled = true
 #func _input(event: InputEvent) -> void:
 #	if event.is_action_pressed("ui_cancel"):
 #		$MainMenu.trigger()
@@ -69,7 +74,18 @@ func setup_level():
 		for child in $TrashScatter3D.get_children():
 			child.global_scale(Vector3(.5,.5,.5))
 		$Player/Head.add_garbage_bag()
-
+		$Player/FPController/LeftHandController/FunctionPointer.enabled = false
+		if UserSettings.use_snap_turn == true:
+			$Player/FPController/RightHandController/MovementTurn.turn_mode = $Player/FPController/RightHandController/MovementTurn.TurnMode.SNAP
+		if UserSettings.use_teleport == true:
+			$Player/FPController/LeftHandController/MovementDirect.enabled = false
+			$Player/FPController/LeftHandController/FunctionTeleport.enabled = true
+			
+	if get_node_or_null("WorldEnvironment/DirectionalLight") != null:
+		$WorldEnvironment/DirectionalLight.shadow_enabled = UserSettings.use_shadows
+	
+	
+	
 func _on_MainMenu_game_started():
 	if(level_name == "vessel" && !is_game_started):
 		$MainMenuViewport3D.enabled = false
@@ -84,7 +100,9 @@ func _on_MainMenu_game_started():
 		$MainMenuViewport3D.enabled = false
 		$MainMenuViewport3D.visible = false
 		$Player/FPController/LeftHandController/FunctionPointer.enabled = false
-		
+		if UserSettings.use_teleport == true:
+			$Player/FPController/LeftHandController/FunctionTeleport.enabled = true
+			
 func _on_Head_trash_picked_up():
 	trash_picked_up += 1
 	var trash_picked_up_percentage = trash_picked_up / initial_trash_count * 100.0
@@ -96,5 +114,24 @@ func _on_Head_game_finished():
 	$WorldEnvironment.finish_game()
 
 func _on_MainMenu_shadows_toggled(toggle):
+	UserSettings.use_shadows = toggle
 	if get_node_or_null("WorldEnvironment/DirectionalLight") != null:
-		$WorldEnvironment/DirectionalLight.shadow_enabled = toggle
+		$WorldEnvironment/DirectionalLight.shadow_enabled = UserSettings.use_shadows
+
+func _on_MainMenu_snap_turn_toggled(toggle):
+	UserSettings.use_snap_turn = toggle
+	if UserSettings.use_snap_turn == true:
+		$Player/FPController/RightHandController/MovementTurn.turn_mode = $Player/FPController/RightHandController/MovementTurn.TurnMode.SNAP
+	else:
+		$Player/FPController/RightHandController/MovementTurn.turn_mode = $Player/FPController/RightHandController/MovementTurn.TurnMode.SMOOTH
+
+
+func _on_MainMenu_teleport_toggled(toggle):
+	UserSettings.use_teleport = toggle
+	if UserSettings.use_teleport == true:
+		$Player/FPController/LeftHandController/MovementDirect.enabled = false
+		if is_game_started == true or level_name != "vessel" and $MainMenuViewport3D.enabled == false:
+			$Player/FPController/LeftHandController/FunctionTeleport.enabled = true
+	else:
+		$Player/FPController/LeftHandController/MovementDirect.enabled = true
+		$Player/FPController/LeftHandController/FunctionTeleport.enabled = false

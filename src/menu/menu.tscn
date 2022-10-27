@@ -41,26 +41,26 @@ align = 1
 [node name="Control2" type="Control" parent="VBoxContainer"]
 margin_top = 100.0
 margin_right = 465.0
-margin_bottom = 713.0
+margin_bottom = 658.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_vertical = 3
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-margin_top = 717.0
+margin_top = 662.0
 margin_right = 465.0
-margin_bottom = 748.0
+margin_bottom = 693.0
 text = "Start Game"
 
 [node name="Control4" type="Control" parent="VBoxContainer"]
-margin_top = 752.0
+margin_top = 697.0
 margin_right = 465.0
-margin_bottom = 784.0
+margin_bottom = 729.0
 rect_min_size = Vector2( 0, 32 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 788.0
+margin_top = 733.0
 margin_right = 465.0
-margin_bottom = 820.0
+margin_bottom = 765.0
 
 [node name="ShadowsCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
 margin_right = 156.0
@@ -82,19 +82,48 @@ margin_bottom = 32.0
 text = " Credits "
 
 [node name="Control5" type="Control" parent="VBoxContainer"]
-margin_top = 824.0
+margin_top = 769.0
 margin_right = 465.0
-margin_bottom = 856.0
+margin_bottom = 801.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 805.0
+margin_right = 465.0
+margin_bottom = 837.0
+
+[node name="SnapTurnCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 170.0
+margin_bottom = 32.0
+text = "Snap Turn"
+
+[node name="Control6" type="Control" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 174.0
+margin_right = 300.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+size_flags_horizontal = 3
+
+[node name="TeleportCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 304.0
+margin_right = 465.0
+margin_bottom = 32.0
+text = "Teleport"
+
+[node name="Control6" type="Control" parent="VBoxContainer"]
+margin_top = 841.0
+margin_right = 465.0
+margin_bottom = 873.0
 rect_min_size = Vector2( 0, 32 )
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
-margin_top = 860.0
+margin_top = 877.0
 margin_right = 465.0
-margin_bottom = 891.0
+margin_bottom = 908.0
 text = "Exit Game"
 
 [node name="Control3" type="Control" parent="VBoxContainer"]
-margin_top = 895.0
+margin_top = 912.0
 margin_right = 465.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 0, 32 )
@@ -180,7 +209,7 @@ autowrap = true
 [node name="Label4" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 1283.0
 margin_right = 500.0
-margin_bottom = 1655.0
+margin_bottom = 1531.0
 size_flags_horizontal = 3
 text = "## Textures
 
@@ -191,9 +220,9 @@ Material Maker library"
 autowrap = true
 
 [node name="Label5" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 1659.0
+margin_top = 1535.0
 margin_right = 500.0
-margin_bottom = 6805.0
+margin_bottom = 7146.0
 size_flags_horizontal = 3
 text = "# 3D Models
 
@@ -247,9 +276,9 @@ Split Point, Victoria (Australia) by Stefan A Vollgger is licensed under Creativ
 autowrap = true
 
 [node name="Label6" type="Label" parent="CreditsPanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 6809.0
+margin_top = 7150.0
 margin_right = 500.0
-margin_bottom = 7367.0
+margin_bottom = 7708.0
 size_flags_horizontal = 3
 text = "## Sound 
 
@@ -268,5 +297,7 @@ text = "Close"
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/ShadowsCheckBox" to="." method="_on_ShadowsCheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/SnapTurnCheckBox" to="." method="_on_SnapTurnCheckBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/TeleportCheckBox" to="." method="_on_TeleportCheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="CreditsPanelContainer/VBoxContainer/CloseCreditsButton" to="." method="_on_CloseCreditsButton_pressed"]

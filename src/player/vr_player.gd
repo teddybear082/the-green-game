@@ -52,6 +52,7 @@ func disable_movement():
 	$Head/grabber.hide()
 	if($Head/garbage_bag):
 		$Head/garbage_bag.hide()
+	$FPController/LeftHandController/FunctionTeleport.enabled = false
 
 func hide_grabber_and_disable_movement():
 	_movement_disabled = true
@@ -59,13 +60,16 @@ func hide_grabber_and_disable_movement():
 		$Head/garbage_bag.hide()
 	$Head/grabber.hide()
 	$FPController/LeftHandController/FunctionPointer.enabled = true
-
+	$FPController/LeftHandController/FunctionTeleport.enabled = false
+	
 func show_grabber_and_enable_movement():
 	_movement_disabled = false
 #	$Head/garbage_bag.show()
 	$Head.introduce_grabber()
 	$FPController/LeftHandController/FunctionPointer.enabled = false
-	
+	if UserSettings.use_teleport == true:
+		$FPController/LeftHandController/FunctionTeleport.enabled = true
+		
 func display_garbage_bag():
 	pass
 	
