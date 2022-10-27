@@ -296,7 +296,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The Green Game"
+config/name="The Green Game VR"
 config/description="Wander the beach and pick up the trash."
 run/main_scene="res://src/start/start_scene_vr.tscn"
 config/icon="res://icon.png"
@@ -308,8 +308,6 @@ UserSettings="*res://src/autoloads/user_settings.gd"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
 window/vsync/use_vsync=false
 
 [editor_plugins]
@@ -369,6 +367,7 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+gles3/shaders/shader_compilation_mode=2
 environment/default_environment="res://default_env.tres"
 quality/godrays/sample_number=50
 quality/godrays/use_pcf5=false
