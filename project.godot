@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/thrash/thrash.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "XRTools",
 "language": "GDScript",
 "path": "res://addons/godot-xr-tools/xr_tools.gd"

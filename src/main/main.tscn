@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://meshes/Material.material" type="Material" id=1]
 [ext_resource path="res://src/main/main.gd" type="Script" id=2]
@@ -29,15 +29,13 @@
 [ext_resource path="res://src/world_environment.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/menu/menu.tscn" type="PackedScene" id=28]
 [ext_resource path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" type="PackedScene" id=29]
+[ext_resource path="res://water_shader_prototype/ocean_low.tscn" type="PackedScene" id=30]
 
 [sub_resource type="PlaneMesh" id=3]
 material = ExtResource( 4 )
 size = Vector2( 512, 1024 )
 subdivide_width = 256
 subdivide_depth = 256
-
-[sub_resource type="BoxShape" id=87]
-extents = Vector3( 56.6247, 7.4116, 1 )
 
 [sub_resource type="ArrayMesh" id=10]
 resource_name = "Plane.004"
@@ -751,6 +749,9 @@ polygon_points = PoolVector2Array( 11.0775, -1.58548, 13.1271, 14.2457, -10.4169
 two_way = false
 polygon_points = PoolVector2Array( 11.7989, -1.90836, 11.8744, 8.72385, -31.9648, 8.77334, -31.5635, -3.2578 )
 
+[sub_resource type="BoxShape" id=87]
+extents = Vector3( 56.6247, 7.4116, 1 )
+
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -759,13 +760,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1562, 1.53228, -32.8876 )
 
 [node name="Water" type="MeshInstance" parent="."]
 transform = Transform( 0.973207, 0, -0.229931, 0, 1, 0, 0.229931, 0, 0.973207, -1.37976, 0.0548973, 0.371742 )
+visible = false
 mesh = SubResource( 3 )
-
-[node name="StaticBody" type="StaticBody" parent="Water"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Water/StaticBody"]
-transform = Transform( 0.583654, 0, 0.812002, 0, 1, 0, -0.812002, 0, 0.583654, 3.31647, 0, 2.58776 )
-shape = SubResource( 87 )
 
 [node name="cliff" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.673245, 0, 0.73942, 0, 1, 0, -0.73942, 0, 0.673245, 10.6554, -4.88343, -10.052 )
@@ -1132,5 +1128,14 @@ shape = SubResource( 88 )
 [node name="Occluder2" type="Occluder" parent="Occluders"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -14.0163 )
 shape = SubResource( 89 )
+
+[node name="ocean_low" parent="." instance=ExtResource( 30 )]
+
+[node name="StaticBody" type="StaticBody" parent="ocean_low"]
+transform = Transform( 0.973207, 0, -0.229931, 0, 1, 0, 0.229931, 0, 0.973207, -1.37976, 0.0548973, 0.371742 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ocean_low/StaticBody"]
+transform = Transform( 0.583654, 0, 0.812002, 0, 1, 0, -0.812002, 0, 0.583654, 3.31647, 0, 2.58776 )
+shape = SubResource( 87 )
 
 [editable path="WorldEnvironment"]
